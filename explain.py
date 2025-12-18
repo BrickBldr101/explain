@@ -43,12 +43,10 @@ def main():
         sys.exit(1)
 
     if command in COMMANDS:
-        #print(f"{command}: {COMMANDS[command]['desc']}")
         output = output + f"{command}: {COMMANDS[command]['desc']}\n"
         if len(sys.argv) > 2:
             for flag in sys.argv[2:]:
                 try:
-                    #print(f"{flag}: {COMMANDS[command]['flags'][flag]}")
                     
                     output = output + f"{flag}: {COMMANDS[command]['flags'][flag]}\n"
                     
