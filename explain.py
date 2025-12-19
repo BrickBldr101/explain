@@ -27,6 +27,25 @@ import sys
 # this variable is for what the console prints
 output = ""
 
+cowsay_activated = False
+
+version = 0.01
+
+ERROR_CODES = {
+    "-1":{
+        "id": "-1",
+        "desc": "unexpected error occured",
+    },
+    "1": {
+        "id": "001",
+        "desc": "command not found",
+    },
+    "2": {
+        "id": "002",
+        "desc": "flag not found",
+    },
+}
+
 # for all of the commands, descriptions and flags
 COMMANDS = {
     "ls": {
@@ -52,23 +71,28 @@ COMMANDS = {
             "-Z": "Set the SELinux security context for the directory",
         },
     },
+    "explain": {
+        "desc": "Helps explain available commands, like this one",
+        "flags": {
+        },
+    },
 }
 
 # exit with an error (requires an error code
 def exit_with_error(error_code):
-    # if the command is not found
-    if error_code == 1:
-        print("Exited with error code 001: command not found")
-        sys.exit(1)
+    if str(error_code) in ERROR_CODES:
+        print(f"Error code {ERROR_CODES[str(error_code)]['id']}: {ERROR_CODES[str(error_code)]['desc']}")
+        sys.exit(error_code)
+    else:
+        error_code = -1
+        print(f"Error code {ERROR_CODES[str(error_code)]['id']}: {ERROR_CODES[str(error_code)]['desc']}")
+        sys.exit(error_code)
         
-    # if the flag is not found
-    elif error_code == 2:
-        print("Exited with error code 002: flag not found")
-        sys.exit(1)
+    
 
 # main function
 def main():
-    global output
+    global output, cowsay_activated
     
     # if the command is called without any arguments
     if len(sys.argv) == 1:
@@ -82,6 +106,14 @@ def main():
     if command == "-h" or command == "--help":
         print("NOTE: Flags such as '--help', '-h', '--version' among others will not be included")
         sys.exit(1)
+        
+    elif command == "-v" or command == "--version":
+        print(f"Explain version {str(version)} currently installed.")
+        sys.exit(1)
+        
+    elif command == "-c" or command == "--cowsay":
+        command = sys.argv[2]
+        cowsay_activated = True
 
     # actually get the command
     if command in COMMANDS:
@@ -100,8 +132,11 @@ def main():
         
     else:
         exit_with_error(1)
-        
-    print(output)
+    
+    if cowsay_activated == False:
+        print(output)
+    elif cowsay_activated == True:
+        print (output + " | cowsay")
 
 if __name__ == "__main__":
     main()
