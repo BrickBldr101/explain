@@ -1,5 +1,27 @@
 #!/usr/bin/env python3
 
+"""
+github repository: git@github.com:BrickBldr101/explain.git
+------------------------------------------------------------------
+when editing code please write comments
+------------------------------------------------------------------
+the command in the terminal its just 'explain <args>'
+------------------------------------------------------------------
+to make the python script: (will delete python file so you will have to re-pull after
+
+chmod +x explain.py
+sudo mv explain.py /usr/local/bin/explain
+
+------------------------------------------------------------------
+to run the command from the python script (testing purposes only, make sure you are in the same directory)
+
+python3 explain.py <args>
+------------------------------------------------------------------
+yes, it is usable with cowsay
+
+explain <args> | cowsay
+"""
+
 import sys
 
 # this variable is for what the console prints
