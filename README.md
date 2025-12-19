@@ -1,6 +1,9 @@
 # explain
 Explain is a command for linux, where a user uses the command to learn more about another command.
 
+TO INSTALL:
+open command line in the correct repository as the script and type "./install.py"
+
 current commands:
 ls
 pwd
