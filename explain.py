@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-github repository: git@github.com:BrickBldr101/explain.git
+github repository (SSH): git@github.com:BrickBldr101/explain.git
 ------------------------------------------------------------------
 when editing code please write comments
 ------------------------------------------------------------------
@@ -23,11 +23,14 @@ explain <args> | cowsay
 """
 
 import sys
+import os
 
 # this variable is for what the console prints
 output = ""
 
 cowsay_activated = False
+
+flagstart = 2
 
 version = 0.01
 
@@ -74,6 +77,7 @@ COMMANDS = {
     "explain": {
         "desc": "Helps explain available commands, like this one",
         "flags": {
+            "-c": "makes a cow do the explanation",
         },
     },
 }
@@ -92,7 +96,7 @@ def exit_with_error(error_code):
 
 # main function
 def main():
-    global output, cowsay_activated
+    global output, cowsay_activated, flagstart
     
     # if the command is called without any arguments
     if len(sys.argv) == 1:
@@ -113,6 +117,7 @@ def main():
         
     elif command == "-c" or command == "--cowsay":
         command = sys.argv[2]
+        flagstart = 3
         cowsay_activated = True
 
     # actually get the command
@@ -120,8 +125,8 @@ def main():
         output = output + f"{command}: {COMMANDS[command]['desc']}\n"
         
         # flags if there are any
-        if len(sys.argv) > 2:
-            for flag in sys.argv[2:]:
+        if len(sys.argv) > flagstart:
+            for flag in sys.argv[flagstart:]:
                 try:
                     
                     output = output + f"{flag}: {COMMANDS[command]['flags'][flag]}\n"
@@ -136,7 +141,7 @@ def main():
     if cowsay_activated == False:
         print(output)
     elif cowsay_activated == True:
-        print (output + " | cowsay")
+        os.system(f"cowsay '{output}'")
 
 if __name__ == "__main__":
     main()
