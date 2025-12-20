@@ -2,7 +2,7 @@
 Explain is a command for linux, where a user uses the command to learn more about another command.
 
 TO INSTALL:
-open command line in the correct repository as the script and type "python3 install.py"
+open command line in the same repository as the script and type "python3 install.py"
 
 AFTER INSTALLATION:
 the extra folder will be deleted
@@ -57,3 +57,6 @@ explain
 
 
 more commands to come in the future
+
+COMMAND USAGE:
+explain <command> <flags>
