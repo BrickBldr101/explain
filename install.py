@@ -27,9 +27,17 @@ else:
     print("Invalid. Abort")
     sys.exit(1)
 
+print("[pre-install] installing dependency: cowsay")
 os.system("sudo apt-get install cowsay")
+print("pre-install complete")
+print("[install] making command executable")
 os.system("chmod +x explain.py")
+print("[install] moving command to bin")
 os.system("sudo mv explain.py /usr/local/bin/explain")
+print("install complete")
 
+print("[post-install] Removing extra files")
 os.system("rm -rf ../explain")
-print("setup complete, explain installed successfully")
+print("[post-install] changing directory")
+os.system("cd ..")
+print("\nsetup complete, explain installed successfully")
