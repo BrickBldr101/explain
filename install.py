@@ -38,6 +38,6 @@ print("install complete")
 
 print("[post-install] Removing extra files")
 os.system("rm -rf ../explain")
-print("[post-install] changing directory")
-os.system("cd ..")
+print("[post-install] changing directory to home")
+os.system("cd ~")
 print("\nsetup complete, explain installed successfully")
