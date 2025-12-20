@@ -5,7 +5,7 @@ TO INSTALL:
 open command line in the same repository as the script and type "python3 install.py"
 
 AFTER INSTALLATION:
-the extra folder will be deleted
+the extra folder will be deleted, but you will not be moved out of the directory, please do that directly after installation
 
 current commands:
 ls

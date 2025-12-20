@@ -3,6 +3,22 @@
 import os
 import sys
 
+def pre_install():
+    print("[pre-install] installing dependency: cowsay")
+    os.system("sudo apt-get install cowsay")
+    
+def install():
+    print("pre-install complete")
+    print("[install] making command executable")
+    os.system("chmod +x explain.py")
+    print("[install] moving command to bin")
+    os.system("sudo mv explain.py /usr/local/bin/explain")
+    print("install complete")
+
+def post_install():
+    print("[post-install] Removing extra files")
+    os.system("rm -rf ../explain")
+
 print("In order to install explain you need to: install the command to bin and install cowsay")
 con = input("Continue? [y/n] ").lower()
 
@@ -27,17 +43,6 @@ else:
     print("Invalid. Abort")
     sys.exit(1)
 
-print("[pre-install] installing dependency: cowsay")
-os.system("sudo apt-get install cowsay")
-print("pre-install complete")
-print("[install] making command executable")
-os.system("chmod +x explain.py")
-print("[install] moving command to bin")
-os.system("sudo mv explain.py /usr/local/bin/explain")
-print("install complete")
 
-print("[post-install] Removing extra files")
-os.system("rm -rf ../explain")
-print("[post-install] changing directory to home")
-os.system("cd ~")
+print("\n\nthe current directory has been deleted, please exit after the installation is comeplete\n")
 print("\nsetup complete, explain installed successfully")
