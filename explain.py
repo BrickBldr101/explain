@@ -32,7 +32,7 @@ cowsay_activated = False
 
 flagstart = 2
 
-version = 0.01
+version = 0.02
 
 ERROR_CODES = {
     "-1":{
@@ -412,7 +412,9 @@ def main():
     
     # if the command is called without any arguments
     if len(sys.argv) == 1:
-        print("usage: explain <command> <flag>")
+        print("usage: explain <command> <flags>")
+        print("\n\nWelcome to explain! \nNote: this command is still in development is is very new")
+        print("Another note: explain only has flags as extra arguments as of now")
         sys.exit(1)
     
     # this is pretty obvious, but sys.argv is the command called (sys.argv[0] would be the actual explain command)
@@ -420,6 +422,8 @@ def main():
     
     #explain help
     if command == "-h" or command == "--help":
+        print("Usage: <command> <flags>")
+        print("NOTE: As of now explain supports few commands and the only arguments it supports are flags")
         print("NOTE: Flags such as '--help', '-h', '--version' among others will not be included")
         sys.exit(1)
         
@@ -431,18 +435,22 @@ def main():
         command = sys.argv[2]
         flagstart = 3
         cowsay_activated = True
-
+        
+    elif command == "--PRINT_ALL_COMMANDS":
+        print(COMMANDS)
+        sys.exit(1)
+        
     # actually get the command
     if command in COMMANDS:
-        output = output + f"{command}: {COMMANDS[command]['desc']}\n"
-        
-        # flags if there are any
+        output = output + f"{command}: {COMMANDS[command]['desc']}"
+            
+        #flags if there are any
         if len(sys.argv) > flagstart:
             for flag in sys.argv[flagstart:]:
                 try:
-                    
-                    output = output + f"{flag}: {COMMANDS[command]['flags'][flag]}\n"
-                    
+                        
+                    output = output + f"\n{flag}: {COMMANDS[command]['flags'][flag]}"
+                        
                 except KeyError:
                     exit_with_error(2)
                     
