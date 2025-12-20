@@ -43,6 +43,8 @@ else:
     print("Invalid. Abort")
     sys.exit(1)
 
-
+pre_install()
+install()
+post_install()
 print("\n\nthe current directory has been deleted, please exit after the installation is comeplete\n")
 print("\nsetup complete, explain installed successfully")
