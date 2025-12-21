@@ -22,6 +22,8 @@ yes, it is usable with cowsay
 explain <args> | cowsay
 """
 
+# man but for beginners basically
+
 import sys
 import os
 
