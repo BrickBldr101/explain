@@ -2,7 +2,7 @@
 Explain is a command for linux, where a user uses the command to learn more about another command.
 
 TO INSTALL:
-open command line in the same repository as the script and type "python3 install.py"
+open command line in the same repository as the install script and type "./install.sh"
 
 AFTER INSTALLATION:
 the extra folder will be deleted, but you will not be moved out of the directory, please do that directly after installation
