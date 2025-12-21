@@ -1,4 +1,4 @@
-#!/usr/bin
+#!/bin/bash
 
 echo "In order to install explain you need to install the following dependencies: cowsay"
 echo "In order to install explain you need to install the main script to /usr/local/bin"
