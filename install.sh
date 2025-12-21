@@ -11,7 +11,7 @@ if [ "$continue" = "y" ]; then
 sudo apt update && sudo apt install cowsay -y
 chmod +x explain.py
 sudo mv explain.py /usr/local/bin/explain
-cd ..
+sudo mkdir /usr/local/share/explain
 rm -rf explain
 else
 echo "Abort."
