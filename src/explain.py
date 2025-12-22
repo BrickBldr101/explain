@@ -33,7 +33,7 @@ output = ""
 
 cowsay_activated = False
 
-flagstart = 2
+argstart = 2
 
 version = 0.2
 
@@ -76,7 +76,7 @@ ERROR_CODES = {
     },
 }
 
-# for all of the commands, descriptions and flags
+# for all of the commands, descriptions and args
 with open('/usr/local/share/explain/commands.json', 'r') as commands:
     COMMANDS = json.load(commands)
 
@@ -95,13 +95,13 @@ def exit_with_error(error_code):
 
 # main function
 def main():
-    global output, cowsay_activated, flagstart
+    global output, cowsay_activated, argstart
     
     # if the command is called without any arguments
     if len(sys.argv) == 1:
-        print("usage: explain <command> <flags>")
+        print("usage: explain <command> <args>")
         print("\n\nWelcome to explain! \nNote: this command is still in development is is very new")
-        print("Another note: explain only has flags as extra arguments as of now")
+        print("Another note: explain only has args as extra arguments as of now")
         sys.exit(1)
     
     # this is pretty obvious, but sys.argv is the command called (sys.argv[0] would be the actual explain command)
@@ -109,9 +109,9 @@ def main():
     
     #explain help
     if command == "-h" or command == "--help":
-        print("Usage: <command> <flags>")
-        print("NOTE: As of now explain supports few commands and the only arguments it supports are flags")
-        print("NOTE: Flags such as '--help', '-h', '--version' among others will not be included")
+        print("Usage: <command> <args>")
+        print("NOTE: As of now explain supports few commands and the only arguments it supports are args")
+        print("NOTE: args such as '--help', '-h', '--version' among others will not be included")
         sys.exit(1)
         
     elif command == "-v" or command == "--version":
@@ -120,7 +120,7 @@ def main():
         
     elif command == "-c" or command == "--cowsay":
         command = sys.argv[2]
-        flagstart = 3
+        argstart = 3
         cowsay_activated = True
         
     elif command == "--PRINT_ALL_COMMANDS":
@@ -135,12 +135,12 @@ def main():
     if command in COMMANDS:
         output = output + f"{command}: {COMMANDS[command]['desc']}"
             
-        #flags if there are any
-        if len(sys.argv) > flagstart:
-            for flag in sys.argv[flagstart:]:
+        #args if there are any
+        if len(sys.argv) > argstart:
+            for flag in sys.argv[argstart:]:
                 try:
                         
-                    output = output + f"\n{flag}: {COMMANDS[command]['flags'][flag]}"
+                    output = output + f"\n{flag}: {COMMANDS[command]['args'][flag]}"
                         
                 except KeyError:
                     exit_with_error(2)
