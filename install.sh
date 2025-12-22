@@ -9,10 +9,10 @@ read continue
 
 if [ "$continue" = "y" ]; then
 sudo apt update && sudo apt install cowsay -y
-chmod +x explain.py
-sudo mv explain.py /usr/local/bin/explain
+chmod +x src/explain.py
+sudo mv src/explain.py /usr/local/bin/explain
 sudo mkdir /usr/local/share/explain
-sudo mv commands.json /usr/local/share/explain
+sudo mv src/commands.json /usr/local/share/explain
 cd ..
 rm -rf explain
 else
