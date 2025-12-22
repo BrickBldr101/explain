@@ -339,5 +339,11 @@
       "-c": "makes a cow do the explanation",
       "-l": "see the license for explain"
     }
-  }
+  },
+  "man": {
+    "desc": "Is a manual for commands, similar to explain but more advanced",
+    "flags": {
+      "-f": "provides the manual in a one-line format",
+      "-a": "Displays all matching manual pages one by one, instead of just the first one found"
+    },
 }
